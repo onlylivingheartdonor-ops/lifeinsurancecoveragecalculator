@@ -96,8 +96,6 @@ const RULES = [
   { key: "human",   label: "Human Life", desc: "Present value of future earnings" },
 ]
 
-import { RELATED_LINKS as RELATED } from "./lib/links"
-
 function fmt(n) {
   if (n >= 1000000) return "$" + (n / 1000000).toFixed(2) + "M"
   return "$" + Math.round(n).toLocaleString("en-US")
