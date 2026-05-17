@@ -130,9 +130,9 @@ export default function Page() {
   const activeAmount = activeRule === "dime" ? ruleDime : activeRule === "10x" ? rule10x : ruleHuman
 
   const ruleMessages = {
-    dime: `The DIME method adds up your debts (${fmtFull(dbt)}), income replacement (${fmtFull(incomePart)}), mortgage (${fmtFull(mtg)}), and education costs (${fmtFull(edu)}), then subtracts existing savings (${fmtFull(sav)}). It is the most thorough of the common methods and works well for households with dependents and a mortgage.`,
-    "10x": `The 10× rule suggests buying coverage equal to ten times your annual income — a quick estimate of ${fmtFull(inc * 10)} before savings. After subtracting your existing assets (${fmtFull(sav)}), that gives a need of roughly ${fmtFull(rule10x)}. It is a useful sanity check but does not account for specific debts, education costs, or term length.`,
-    human: `The Human Life Value method estimates the present value of your future earnings — what your income stream is worth today in today's dollars. Using a modest discount rate, that comes to approximately ${fmtFull(ruleHuman)} after existing savings. This method is most useful for people whose primary concern is income replacement rather than debt coverage.`,
+    dime: "The DIME method adds up your debts (" + fmtFull(dbt) + "), income replacement (" + fmtFull(incomePart) + "), mortgage (" + fmtFull(mtg) + "), and education costs (" + fmtFull(edu) + "), then subtracts existing savings (" + fmtFull(sav) + "). It is the most thorough of the common methods and works well for households with dependents and a mortgage.",
+    "10x": "The 10\u00d7 rule suggests buying coverage equal to ten times your annual income \u2014 a quick estimate of " + fmtFull(inc * 10) + " before savings. After subtracting your existing assets (" + fmtFull(sav) + "), that gives a need of roughly " + fmtFull(rule10x) + ". It is a useful sanity check but does not account for specific debts, education costs, or term length.",
+    human: "The Human Life Value method estimates the present value of your future earnings \u2014 what your income stream is worth today in today\u2019s dollars. Using a modest discount rate, that comes to approximately " + fmtFull(ruleHuman) + " after existing savings. This method is most useful for people whose primary concern is income replacement rather than debt coverage.",
   }
 
   const maxBar = Math.max(incomePart, dbt, mtg, edu, sav, 1)
@@ -270,7 +270,7 @@ export default function Page() {
                 <p className="li-field-label" style={{ marginBottom: ".5rem" }}>Compare calculation methods</p>
                 <div className="li-rule-tabs">
                   {RULES.map(r => (
-                    <button key={r.key} className={`li-rule-tab${activeRule === r.key ? " on" : ""}`}
+                    <button key={r.key} className={"li-rule-tab" + (activeRule === r.key ? " on" : "")}
                       onClick={() => setActiveRule(r.key)}>
                       {r.label}
                     </button>
@@ -386,16 +386,16 @@ export default function Page() {
         {/* ========== MONEYWISE LINK — END ========== */}
 
         {/* RELATED */}
-        <div className="dr-card">
-          <p className="dr-section-title">Related tools</p>
-          <div className="dr-related-links">
+        <div className="li-card">
+          <p className="li-section-title">Related tools</p>
+          <div className="li-related-links">
             {RELATED.map((r, i) => (
-              <a key={i} className="dr-related-link" href={r.href}>{r.label}</a>
+              <a key={i} className="li-related-link" href={r.href}>{r.label}</a>
             ))}
           </div>
-          <div className="dr-disclaimer">
+          <div className="li-disclaimer">
             This tool provides estimates for informational purposes only and does not constitute financial advice. Results assume a fixed interest rate and fixed monthly payment for the full repayment period. This site may use cookies and analytics. By using this site, you agree to our Privacy Policy and Terms of Service.
-            <div className="dr-footer-links">
+            <div className="li-footer-links">
               <a href="/privacy">Privacy Policy</a>
               <a href="/terms">Terms of Service</a>
             </div>
